@@ -1,0 +1,18 @@
+.search-and-sort-container {
+    display: flex;
+    padding: 16px 20px;
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    flex: 1;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    flex: 1;
+}
