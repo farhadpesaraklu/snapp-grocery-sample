@@ -7,7 +7,7 @@ interface LabeledIconProps {
     height?: number;
 }
 
-const LabeledIcon: FC<LabeledIconProps> = ({ title, icon, width = 16, height = 16 }) => {
+const LabeledIcon: FC<LabeledIconProps> = ({ title, icon, width = 14, height = 14 }) => {
     return (
         <div className="container">
             <img src={icon} alt="" width={width} height={height} />
