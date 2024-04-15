@@ -2,7 +2,6 @@ import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import AppRouter from './pages/AppRoutes';
-import { MainLayout } from './components/MainLayout/MainLayout';
 
 const queryClient = new QueryClient();
 
