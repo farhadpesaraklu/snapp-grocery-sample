@@ -1,13 +1,15 @@
 import SearchAndSort from "../../components/searchAndSort/SearchAndSort"
 import Categories from "../../components/categories/Categories";
-import ProductCard from "../../components/productCard/ProductCard";
-
+import ProductList from "../../components/ProductList/ProductList";
+import  "./Supermarket.css"
 const Supermarket = () => {
     return (
-        <div>
+        <div className="supermarket-container">
             <SearchAndSort/>
             <Categories items={tempCategory}/>
-            <ProductCard/>
+            <div className="product-list-container">
+            <ProductList/>
+            </div>
         </div>
     )
 }
