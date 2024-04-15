@@ -1,5 +1,6 @@
 .search-and-sort-container {
     display: flex;
+    align-items: center;
     padding: 16px 20px;
     border-bottom: 1px solid #e6e6e6;
 }
