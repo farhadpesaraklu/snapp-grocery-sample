@@ -1,11 +1,13 @@
 import SearchAndSort from "../../components/searchAndSort/SearchAndSort"
 import Categories from "../../components/categories/Categories";
+import ProductCard from "../../components/productCard/ProductCard";
 
 const Supermarket = () => {
     return (
         <div>
             <SearchAndSort/>
             <Categories items={tempCategory}/>
+            <ProductCard/>
         </div>
     )
 }
