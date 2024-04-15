@@ -1,6 +1,5 @@
 import { FC } from "react";
 import './MainLayout.css';
-import { ArrowRight } from "iconsax-react";
 import backIcon from "../../assets/Images/headerChevron.svg"
 import snappExpressLogo from "../../assets/Images/expressLogo.svg"
 import { RouteEnums } from "../../utils/enums/routeEnum";
