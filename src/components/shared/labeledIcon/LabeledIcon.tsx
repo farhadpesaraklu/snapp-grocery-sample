@@ -1,4 +1,4 @@
-import {FC} from "react"
+import { FC } from "react"
 import "./LabeledIcon.css"
 
 interface LabeledIconProps {
@@ -6,13 +6,13 @@ interface LabeledIconProps {
     icon: string;
     width?: number;
     height?: number;
-    onClick: () => void
+    onClick?: () => void
 }
 
-const LabeledIcon: FC<LabeledIconProps> = ({title, icon, width = 14, height = 14,onClick}) => {
+const LabeledIcon: FC<LabeledIconProps> = ({ title, icon, width = 14, height = 14, onClick }) => {
     return (
         <div className="container" onClick={onClick}>
-            <img src={icon} alt="" width={width} height={height}/>
+            <img src={icon} alt="" width={width} height={height} />
             {title ?? <span>{title}</span>}
         </div>
     )
