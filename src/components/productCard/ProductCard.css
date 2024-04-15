@@ -1,11 +1,4 @@
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    overflow-x: hidden;
-    width: 100%;
-    align-items: stretch;
-}
+
 
 .product-img {
     margin: 4px;
