@@ -1,53 +1,18 @@
-import ProductImg from "../../assets/Images/productTest (1).webp";
+import { VendorCateogryProductListResponse } from "../../services/vendorProductCategoryService/type";
 import ProductCard from "../productCard/ProductCard";
-import "./ProductList.css"
+import "./ProductList.css";
 
-const ProductList = () => {
-    return (
-        <div className="list-container">
-            {array.map((item, index) => (
-                <ProductCard item={item} />
-            ))}
-        </div>
-    )
+interface ProductListProps {
+  data: VendorCateogryProductListResponse[];
 }
-export default ProductList
 
-
-const array = [
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-    {
-        title: " شیر پرچرب کودک ماجان کاله ۲۰۰ میلی لیتری",
-        img: ProductImg,
-        price: 33300,
-    },
-];
+const ProductList = ({ data }: ProductListProps) => {
+  return (
+    <div className="list-container">
+      {data.map((page) =>
+        page?.finalResult?.map((item) => <ProductCard key={item.id} item={item} />),
+      )}
+    </div>
+  );
+};
+export default ProductList;
