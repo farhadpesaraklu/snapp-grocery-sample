@@ -1,0 +1,36 @@
+.scrollable-container {
+    width: 100%; /* Adjust based on your needs */
+    overflow-x: scroll;
+    white-space: nowrap; /* Prevent line breaks */
+    display: flex;
+    align-items: center;
+    height: 68px;
+    background-color: #f8f9fb;
+    scroll-behavior: smooth;
+}
+
+.scrollable-container::-webkit-scrollbar {
+    display: none;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 6px;
+    margin: 0 10px; /* Adjust spacing between items */
+    width: fit-content;
+    height: 52px;
+    padding: 0 10px;
+    box-shadow:  0 2px 12px 0 rgba(0,0,0,.1);
+    color:#505050;
+    font-size: 12px;
+}
+
+.selected {
+    border: 1px solid #22a958;
+    color: #22a958;
+    /* Style for the selected item (e.g., background color) */
+
+}
