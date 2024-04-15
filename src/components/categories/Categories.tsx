@@ -43,7 +43,7 @@ const Categories: FC<CategoriesProps> = ({items}) => {
             {items.map((item: Item) => (
 
                 <div
-                    ref={(ref) => (itemRefs.current[item.id] = ref)}
+                    // ref={(ref) => (itemRefs.current[item.id] = ref)}
                     key={item.id}
                     className={`item ${selectedItemId === item.id ? 'selected' : ''}`}
                     data-id={item.id} // Use data-id for selection
