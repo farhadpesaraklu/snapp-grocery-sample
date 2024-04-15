@@ -9,7 +9,6 @@ const SearchAndSort = () => {
         <div className="search-and-sort-container" >
             <div className="search-icon" >
                 <LabeledIcon icon={SearchIcon} width={28} height={28} />
-                {/* <img src={SearchIcon} alt='' /> */}
             </div>
 
 
