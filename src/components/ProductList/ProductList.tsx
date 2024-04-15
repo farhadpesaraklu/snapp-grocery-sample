@@ -1,13 +1,12 @@
-import React from 'react'
 import ProductImg from "../../assets/Images/productTest (1).webp";
 import ProductCard from "../productCard/ProductCard";
 import "./ProductList.css"
 
 const ProductList = () => {
     return (
-        <div className="row">
+        <div className="list-container">
             {array.map((item, index) => (
-                <ProductCard item={item}/>
+                <ProductCard item={item} />
             ))}
         </div>
     )
