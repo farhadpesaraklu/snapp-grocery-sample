@@ -4,14 +4,19 @@ body {
   font-family: IRANSansXFaNum, serif !important;
   direction: rtl;
   margin: 0;
-  ::-webkit-scrollbar {
-    width: 7px;
-    background-color: transparent;
-  }
+  --scrolling: false;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
 
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.1);
-    opacity: 0.7;
-    border-radius: 8px;
-  }
+body::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--scrolling, transparent);
+  opacity: 0.7;
+  border-radius: 8px;
+  width: 20px;
 }
