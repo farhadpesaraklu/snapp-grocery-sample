@@ -1,4 +1,4 @@
-import {FC, useEffect, useRef, useState, Ref} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 import "./Categories.css"
 import {useLocation} from "react-router";
 import tempPic from "../../assets/Images/expressLogo.svg"
@@ -13,7 +13,9 @@ interface CategoriesProps {
 }
 
 const Categories: FC<CategoriesProps> = ({items}) => {
-    const itemRefs = useRef<HTMLDivElement[]>([]); // Use HTMLDivElement[] for specificity
+    const itemRefs = useRef<Record<string, HTMLDivElement | null>>(
+        {}
+    );
 
     const [selectedItemId, setSelectedItemId] = useState<string | null>(
         sessionStorage.getItem("selectedCategoryId")
@@ -27,9 +29,7 @@ const Categories: FC<CategoriesProps> = ({items}) => {
 
     useEffect(() => {
         if (selectedItemId) {
-            const selectedItemRef = itemRefs.current.find(
-                (ref) => ref?.id === selectedItemId
-            );
+            const selectedItemRef = itemRefs.current[selectedItemId];
 
             if (selectedItemRef) {
                 selectedItemRef.scrollIntoView({behavior: "smooth"});
@@ -43,13 +43,13 @@ const Categories: FC<CategoriesProps> = ({items}) => {
             {items.map((item: Item) => (
 
                 <div
-                    // ref={(ref) => (itemRefs.current[item.id] = ref)}
+                    ref={(ref) => (itemRefs.current[item.id] = ref)}
                     key={item.id}
                     className={`item ${selectedItemId === item.id ? 'selected' : ''}`}
-                    data-id={item.id} // Use data-id for selection
+                    data-id={item.id}
                     onClick={() => handleItemClick(item)}
                 >
-                    <span>{item.text}</span>
+                    <span className="product-name">{item.text}</span>
                     <img src={tempPic} alt="pic" width={48} height={48}/>
                 </div>
             ))}
