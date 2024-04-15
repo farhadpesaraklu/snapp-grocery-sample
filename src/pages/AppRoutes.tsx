@@ -4,24 +4,23 @@ import { MainLayout } from "../components/mainLayout/MainLayout";
 import Supermarket from "./supermarket/Supermarket";
 import Search from "./search/Search";
 
-
 const AppRouter = createBrowserRouter([
   {
     path: `/`,
-    element: <MainLayout><Supermarket /></MainLayout>,
-    // children: [
-    //   {
-    //     path: `${RouteEnums.SEARCH}`,
-    //     element: <mainLayout><div>asasdasdsdad</div></mainLayout>,
-    //   }
-    // ]
+    element: (
+      <MainLayout>
+        <Supermarket />
+      </MainLayout>
+    ),
   },
   {
     path: `/${RouteEnums.SEARCH}`,
-    element: <MainLayout><Search /></MainLayout>,
+    element: (
+      <MainLayout>
+        <Search />
+      </MainLayout>
+    ),
   },
-
-
 ]);
 
 export default AppRouter;
