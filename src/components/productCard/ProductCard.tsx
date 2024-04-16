@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { FinalResult } from "../../services/vendorProductCategoryService/type";
 import "./ProductCard.css";
+import { Add } from "iconsax-react";
 
 interface ProductCardProps {
   item: FinalResult;
@@ -11,6 +12,11 @@ const ProductCard: FC<ProductCardProps> = ({ item }) => {
     <div className="product-card">
       <div className="product-img">
         <img src={item.data.images?.[0]?.main} height="120px" width="120px" alt="" />
+        <div className="action-wrapper">
+          <div className="plus-container">
+            <Add variant="Linear" />
+          </div>
+        </div>
       </div>
       <div className="product-card-title">{item.data.title}</div>
       <div className="product-card-bages"></div>
