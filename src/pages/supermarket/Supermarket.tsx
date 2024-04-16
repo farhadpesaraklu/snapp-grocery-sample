@@ -2,10 +2,10 @@ import { useState } from "react";
 
 import TopToolbar from "../../components/topToolbar/TopToolbar";
 import SubCategories from "../../components/subCategories/SubCategories";
-import ProductList from "../../components/productList/ProductList";
 import "./Supermarket.css";
 import useCategory from "../../hooks/useCategory";
 import useInfiniteLoading from "../../utils/hooks/useInfiniteLoading";
+import ProductList from "../../components/ProductList/ProductList";
 
 const Supermarket = () => {
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(null);
