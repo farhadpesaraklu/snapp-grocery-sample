@@ -7,6 +7,7 @@ export interface VendorCateogryProductListParams {
   subcat_id?: number;
   client?: string;
   deviceType?: string;
+  filters?: string[]
 }
 
 export interface FinalResult {
