@@ -18,7 +18,7 @@ const initialState: FilterAndSortProps = {
 };
 
 export const filterArraySlice = createSlice({
-  name: "filterArray",
+  name: "filterAndSortSlice",
   initialState,
   reducers: {
     setFiltersAndSortList: (state, action: PayloadAction<Filters>) => {

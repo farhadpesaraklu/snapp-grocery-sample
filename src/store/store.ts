@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import filterArrayReducer from "./reducers/filterArrayReducer";
+import subCategoriesReducer from "./reducers/subCategoriesReducer";
 
 const persistConfig = {
   key: "root",
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   filterList: filterArrayReducer,
+  subCategoriesList: subCategoriesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
