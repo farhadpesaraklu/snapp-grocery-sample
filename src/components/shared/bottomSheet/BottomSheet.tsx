@@ -4,11 +4,12 @@ import Sheet, { SheetRef } from "react-modal-sheet";
 
 interface BottomSheetProps {
   isOpen: boolean;
+  isFilterOpen: boolean;
   onClose: () => void;
   content: React.ReactNode;
 }
 
-const BottomSheet: FC<BottomSheetProps> = ({ isOpen, onClose, content }) => {
+const BottomSheet: FC<BottomSheetProps> = ({ isOpen, onClose, content, isFilterOpen }) => {
   const ref = useRef<SheetRef>();
   let sheetRoot = document.getElementById("sheet-root");
 
@@ -19,7 +20,8 @@ const BottomSheet: FC<BottomSheetProps> = ({ isOpen, onClose, content }) => {
   }
 
   const sheetComponent = (
-    <Sheet ref={ref} isOpen={isOpen} onClose={onClose}>
+    <Sheet ref={ref} isOpen={isOpen} onClose={onClose} snapPoints={isFilterOpen ? [850] : [246]}
+      initialSnap={1}>
       <Sheet.Container>
         <Sheet.Content>
           <Sheet.Scroller draggableAt="both">{content}</Sheet.Scroller>
