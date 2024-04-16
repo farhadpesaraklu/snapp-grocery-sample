@@ -9,6 +9,7 @@ const getVendorCategoryProductList = ({
   page,
   page_size,
   size,
+  filters
 }: VendorCateogryProductListParams) => {
   return http
     .get(apiUrlConstants.productList, {
@@ -19,6 +20,7 @@ const getVendorCategoryProductList = ({
         page_size,
         size,
         subcat_id,
+        filters
       },
     })
     .then((res) => res.data);
