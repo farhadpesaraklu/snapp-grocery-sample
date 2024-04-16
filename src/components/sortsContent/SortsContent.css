@@ -1,6 +1,17 @@
-.sort-container{
+.sort-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.sort-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 24px;
+}
+
+.radio {
+    background-color: #4CAF50;
 }
