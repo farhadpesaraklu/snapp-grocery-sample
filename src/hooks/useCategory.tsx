@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { getVendorCategoryProductList } from "../services/vendorProductCategoryService/vendorProductCategoryServices";
 import { setFiltersAndSortList } from "../store/reducers/filterArrayReducer";
+import { setSubCategoriesList } from "../store/reducers/subCategoriesReducer";
 
 const useCategory = ({
   category_id,
@@ -44,6 +45,7 @@ const useCategory = ({
     onSuccess: (res) => {
       if (res?.pages?.[0]?.extra_sections) {
         dispatch(setFiltersAndSortList(res?.pages?.[0]?.extra_sections?.filters));
+        dispatch(setSubCategoriesList(res?.pages?.[0]?.extra_sections?.categories));
       }
     },
     staleTime: 30 * 60 * 1000,
