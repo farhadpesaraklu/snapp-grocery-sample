@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Filters } from "../../services/vendorProductCategoryService/type";
 
-interface sortProps {
+interface FilterAndSortProps {
   sortValue: string;
   filterValuesList: string[];
   filtersAndSortList: Filters;
 }
 
-const initialState: sortProps = {
+const initialState: FilterAndSortProps = {
   filterValuesList: [],
   sortValue: "",
   filtersAndSortList: {
