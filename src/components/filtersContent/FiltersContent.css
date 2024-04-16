@@ -1,7 +1,7 @@
 .filter-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100%;
 }
 
@@ -71,7 +71,7 @@ input:checked+.slider:before {
     -webkit-transform: translateX(14px);
     -ms-transform: translateX(14px);
     transform: translateX(14px);
-    content: url("../../assets/Images/tickMark.svg");
+    /* content: url("../../assets/Images/tickMark.svg"); */
 }
 
 .slider.round {
@@ -82,4 +82,38 @@ input:checked+.slider:before {
     border-radius: 50%;
     width: 22px;
     height: 22px;
+}
+
+.container-btn {
+    display: flex;
+    gap: 16px;
+    padding: 0 24px 8px;
+    box-sizing: border-box;
+
+}
+
+.delete-btn {
+    flex: 1;
+    width: 100%;
+    border: 1px solid #424242;
+    border-radius: 6px;
+    color: #424242;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: iranSansX;
+    height: 48px;
+    background-color: #fff;
+}
+
+.action-btn {
+    font-family: iranSansX;
+    flex: 1;
+    width: 100%;
+    background-color: rgb(255, 102, 31);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    border: 1px solid rgb(255, 102, 31);
+    border-radius: 3px;
+    height: 48px;
 }
