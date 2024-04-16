@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import TopToolbar from "../../components/topToolbar/TopToolbar";
 import SubCategories from "../../components/subCategories/SubCategories";
@@ -7,9 +7,14 @@ import useCategory from "../../hooks/useCategory";
 import useInfiniteLoading from "../../utils/hooks/useInfiniteLoading";
 import ProductList from "../../components/ProductList/ProductList";
 import { TailSpin } from "react-loader-spinner";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const Supermarket = () => {
+
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(Number(sessionStorage.getItem("selectedCategoryId")) ?? null);
+
+  const uniqueFiltersSet = (useSelector((state: RootState) => state.filterList.sortValue))
 
   const {
     vendorCategoryData,
@@ -19,6 +24,7 @@ const Supermarket = () => {
     vendor_code: "3eze12",
     category_id: "731207",
     subcat_id: selectedSubCategoryId || undefined,
+    filters: [uniqueFiltersSet]
   });
 
   useInfiniteLoading({
