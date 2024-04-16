@@ -32,7 +32,7 @@ const SubCategories: FC<SubCategoriesProps> = ({ items, handleClickSubCategory }
 
   return (
     <div className="scrollable-container">
-      {items.map((item) => (
+      {items?.map((item) => (
         <div
           ref={(ref) => (itemRefs.current[item.id] = ref)}
           key={item.id}

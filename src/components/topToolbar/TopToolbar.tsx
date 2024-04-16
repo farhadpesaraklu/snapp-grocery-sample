@@ -10,8 +10,14 @@ import { RouteEnums } from "../../utils/enums/routeEnum";
 import BottomSheet from "../shared/bottomSheet/BottomSheet";
 import FiltersContent from "../filtersContent/FiltersContent";
 import SortsContent from "../sortsContent/SortsContent";
+import { Filters } from "../../services/vendorProductCategoryService/type";
+import textConstants from "../../constants/textConstants";
 
-const TopToolbar = () => {
+interface TopToolbarProps {
+  data: Filters;
+}
+
+const TopToolbar = ({ data }: TopToolbarProps) => {
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
@@ -23,7 +29,6 @@ const TopToolbar = () => {
   const handleFilter = () => {
     setIsFilterOpen(true);
     setOpen(false);
-
   };
 
   return (
@@ -39,16 +44,26 @@ const TopToolbar = () => {
         </div>
 
         <div className="toolbar-sort-container">
-          <LabeledIcon icon={sortIcon} title="مرتب سازی" onClick={handleSort} />
-          <LabeledIcon icon={settingIcon} title="فیلتر" onClick={handleFilter} />
+          <LabeledIcon icon={sortIcon} title={textConstants.sortTitle} onClick={handleSort} />
+          <LabeledIcon
+            icon={settingIcon}
+            title={textConstants.filtersTitle}
+            onClick={handleFilter}
+          />
         </div>
         <BottomSheet
           onClose={() => {
-            setOpen(false)
-            setIsFilterOpen(false)
+            setOpen(false);
+            setIsFilterOpen(false);
           }}
           isOpen={isOpen || isFilterOpen}
-          content={isFilterOpen ? <FiltersContent setIsFilterOpen={setIsFilterOpen} /> : <SortsContent setOpen={setOpen} />}
+          content={
+            isFilterOpen ? (
+              <FiltersContent setIsFilterOpen={setIsFilterOpen} filtersList={data?.sections?.[0]} />
+            ) : (
+              <SortsContent setOpen={setOpen} sorts={data?.top?.data} />
+            )
+          }
           isFilterOpen={isFilterOpen}
         />
       </div>
