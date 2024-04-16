@@ -1,3 +1,4 @@
+import qs from "qs";
 import { apiUrlConstants } from "../../constants/apiUrlConstants";
 import http from "../../utils/http";
 import { VendorCateogryProductListParams } from "./type";
@@ -9,7 +10,7 @@ const getVendorCategoryProductList = ({
   page,
   page_size,
   size,
-  filters
+  filters,
 }: VendorCateogryProductListParams) => {
   return http
     .get(apiUrlConstants.productList, {
@@ -20,7 +21,7 @@ const getVendorCategoryProductList = ({
         page_size,
         size,
         subcat_id,
-        filters
+        filters: JSON.stringify(filters),
       },
     })
     .then((res) => res.data);
