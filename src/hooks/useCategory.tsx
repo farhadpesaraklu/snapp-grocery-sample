@@ -1,6 +1,8 @@
 import { useInfiniteQuery } from "react-query";
+import { useDispatch } from "react-redux";
 
 import { getVendorCategoryProductList } from "../services/vendorProductCategoryService/vendorProductCategoryServices";
+import { setFiltersAndSortList } from "../store/reducers/filterArrayReducer";
 
 const useCategory = ({
   category_id,
@@ -11,8 +13,10 @@ const useCategory = ({
   category_id: string;
   vendor_code: string;
   subcat_id?: number;
-  filters?: string[]
+  filters?: string[];
 }) => {
+  const dispatch = useDispatch();
+
   const {
     data: vendorCategoryData,
     isLoading: vendorCategoryDataLoading,
@@ -21,7 +25,7 @@ const useCategory = ({
     fetchNextPage: vendorCategoryDataFetchNextPage,
     refetch: refetchVendorCategoryData,
   } = useInfiniteQuery({
-    queryKey: ["getVendorCategoryData", subcat_id, filters],
+    queryKey: ["getVendorCategoryData", subcat_id, filters?.length],
     queryFn: ({ pageParam = 0 }) => {
       return getVendorCategoryProductList({
         category_id,
@@ -30,12 +34,17 @@ const useCategory = ({
         page: pageParam,
         page_size: 12,
         size: 12,
-        filters
+        filters,
       }).then((res) => res.data);
     },
     getNextPageParam: (lastPage, allPages) => {
       const allLength = allPages.length - 1;
-      return lastPage.finalResult.length > 0 ? allLength + 1 : undefined;
+      return lastPage?.finalResult.length > 0 ? allLength + 1 : undefined;
+    },
+    onSuccess: (res) => {
+      if (res?.pages?.[0]?.extra_sections) {
+        dispatch(setFiltersAndSortList(res?.pages?.[0]?.extra_sections?.filters));
+      }
     },
     staleTime: 30 * 60 * 1000,
   });
