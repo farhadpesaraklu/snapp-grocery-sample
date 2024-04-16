@@ -1,25 +1,26 @@
+import { FC } from "react";
 import { CloseCircle } from "iconsax-react";
-import { FC, useState } from "react";
-import "./SortsContent.css";
 import { useDispatch, useSelector } from "react-redux";
+
+import "./SortsContent.css";
 import { setSortValue } from "../../store/reducers/filterArrayReducer";
 import { RootState } from "../../store/store";
-
+import { FilterDetail } from "../../services/vendorProductCategoryService/type";
+import textConstants from "../../constants/textConstants";
 
 interface SortsContentProps {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  sorts: FilterDetail[];
 }
 
-type SortValue = 'least_expensive' | 'most_expensive' | "";
-
-const SortsContent: FC<SortsContentProps> = ({ setOpen }) => {
-  const dispatch = useDispatch()
-  const selectedSort = useSelector((state: RootState) => state.filterList.sortValue)
-  const handleSortChange = (value: SortValue) => {
+const SortsContent: FC<SortsContentProps> = ({ setOpen, sorts }) => {
+  const dispatch = useDispatch();
+  const selectedSort = useSelector((state: RootState) => state.filterList.sortValue);
+  const handleSortChange = (value: string) => {
     if (selectedSort === value) {
-      dispatch(setSortValue(""))
+      dispatch(setSortValue(""));
     } else {
-      dispatch(setSortValue(value))
+      dispatch(setSortValue(value));
     }
     setOpen(false);
   };
@@ -27,20 +28,23 @@ const SortsContent: FC<SortsContentProps> = ({ setOpen }) => {
   return (
     <div className="sort-container">
       <div className="sort-row">
-        <span>مرتب سازی</span>
+        <span>{textConstants.sortTitle}</span>
         <CloseCircle size={24} onClick={() => setOpen(false)} />
       </div>
-      <div className="sort-row">
-        <span>ارزان ترین</span>
-        <input type="checkbox" className="radio" onChange={() => handleSortChange('least_expensive')}
-          value="least_expensive" checked={selectedSort === 'least_expensive'} />
-      </div>
-      <div className="sort-row">
-        <span>گران ترین</span>
-        <input type="checkbox" className="radio" onChange={() => handleSortChange('most_expensive')}
-          value="most_expensive"
-          checked={selectedSort === 'most_expensive'} />
-      </div>
+      {sorts?.map((sortItem) => {
+        return (
+          <div className="sort-row" onClick={() => handleSortChange(sortItem.value)}>
+            <span>{sortItem.title}</span>
+            <input
+              type="checkbox"
+              className="radio"
+              onChange={() => handleSortChange(sortItem.value)}
+              value={sortItem.value}
+              checked={selectedSort === sortItem.value}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
