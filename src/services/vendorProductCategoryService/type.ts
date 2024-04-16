@@ -7,7 +7,7 @@ export interface VendorCateogryProductListParams {
   subcat_id?: number;
   client?: string;
   deviceType?: string;
-  filters?: string[]
+  filters?: string[];
 }
 
 export interface FinalResult {
@@ -56,19 +56,19 @@ interface Extrasections {
   categories: Category[];
   filters: Filters;
 }
-interface Filters {
+export interface Filters {
   sections: Section[];
   top: Top;
 }
 interface Top {
-  data: Datum[];
+  data: FilterDetail[];
 }
-interface Section {
-  data: Datum[];
+export interface Section {
+  data: FilterDetail[];
   section_name: string;
   section_name_fa: string;
 }
-interface Datum {
+export interface FilterDetail {
   image?: any;
   kind: string;
   selected: boolean;
