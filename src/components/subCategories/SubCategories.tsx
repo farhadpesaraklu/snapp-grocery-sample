@@ -1,5 +1,4 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router";
 
 import "./SubCategories.css";
 import { Category } from "../../services/vendorProductCategoryService/type";
@@ -15,8 +14,6 @@ const SubCategories: FC<SubCategoriesProps> = ({ items, handleClickSubCategory }
   const [selectedItemId, setSelectedItemId] = useState<number | null>(
     Number(sessionStorage.getItem("selectedCategoryId")),
   );
-
-  const location = useLocation();
   const handleItemClick = (item: Category) => {
     setSelectedItemId(item.id);
     sessionStorage.setItem("selectedCategoryId", item.id.toString());

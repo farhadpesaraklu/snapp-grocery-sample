@@ -8,7 +8,8 @@ import useInfiniteLoading from "../../utils/hooks/useInfiniteLoading";
 import ProductList from "../../components/ProductList/ProductList";
 
 const Supermarket = () => {
-  const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(null);
+  const [selectedSubCategoryId, setSelectedSubCategoryId] = useState<number | null>(Number(sessionStorage.getItem("selectedCategoryId")) ?? null);
+
   const {
     vendorCategoryData,
     vendorCategoryDataFetchNextPage,
@@ -18,6 +19,7 @@ const Supermarket = () => {
     category_id: "731207",
     subcat_id: selectedSubCategoryId || undefined,
   });
+  console.log(selectedSubCategoryId);
 
   useInfiniteLoading({
     scrollingElementSelector: "#list-container",
