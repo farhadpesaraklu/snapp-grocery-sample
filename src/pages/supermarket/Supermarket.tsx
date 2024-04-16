@@ -29,7 +29,6 @@ const Supermarket = () => {
     subcat_id: selectedSubCategoryId || undefined,
     filters: [...selectedFiltersList, uniqueFiltersSet],
   });
-  console.log("uniqueFiltersSet", uniqueFiltersSet);
 
   useEffect(() => {
     refetchVendorCategoryData();
