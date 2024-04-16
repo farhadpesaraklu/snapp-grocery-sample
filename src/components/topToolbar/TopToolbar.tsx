@@ -14,15 +14,16 @@ import SortsContent from "../sortsContent/SortsContent";
 const TopToolbar = () => {
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
-  const [isFilter, setIsFilter] = useState<boolean | null>(null);
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const handleSort = () => {
     setOpen(true);
-    setIsFilter(false);
+    setIsFilterOpen(false);
   };
 
   const handleFilter = () => {
-    setOpen(true);
-    setIsFilter(true);
+    setIsFilterOpen(true);
+    setOpen(false);
+
   };
 
   return (
@@ -37,14 +38,18 @@ const TopToolbar = () => {
           />
         </div>
 
-        <div className="sort-container">
+        <div className="toolbar-sort-container">
           <LabeledIcon icon={sortIcon} title="مرتب سازی" onClick={handleSort} />
           <LabeledIcon icon={settingIcon} title="فیلتر" onClick={handleFilter} />
         </div>
         <BottomSheet
-          onClose={() => setOpen(false)}
-          isOpen={isOpen}
-          content={isFilter ? <FiltersContent /> : <SortsContent onClose={() => setOpen(false)} />}
+          onClose={() => {
+            setOpen(false)
+            setIsFilterOpen(false)
+          }}
+          isOpen={isOpen || isFilterOpen}
+          content={isFilterOpen ? <FiltersContent setIsFilterOpen={setIsFilterOpen} /> : <SortsContent setOpen={setOpen} />}
+          isFilterOpen={isFilterOpen}
         />
       </div>
     </>
