@@ -6,10 +6,12 @@ const useCategory = ({
   category_id,
   vendor_code,
   subcat_id,
+  filters,
 }: {
   category_id: string;
   vendor_code: string;
   subcat_id?: number;
+  filters?: string[]
 }) => {
   const {
     data: vendorCategoryData,
@@ -19,7 +21,7 @@ const useCategory = ({
     fetchNextPage: vendorCategoryDataFetchNextPage,
     refetch: refetchVendorCategoryData,
   } = useInfiniteQuery({
-    queryKey: ["getVendorCategoryData", subcat_id],
+    queryKey: ["getVendorCategoryData", subcat_id, filters],
     queryFn: ({ pageParam = 0 }) => {
       return getVendorCategoryProductList({
         category_id,
@@ -28,6 +30,7 @@ const useCategory = ({
         page: pageParam,
         page_size: 12,
         size: 12,
+        filters
       }).then((res) => res.data);
     },
     getNextPageParam: (lastPage, allPages) => {
