@@ -18,6 +18,7 @@ const useInfiniteLoading = ({
     if (toBeWatchedData && scrollingElement?.scrollHeight! <= scrollingElement?.clientHeight!) {
       setTimeout(loaderMethod, 0);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toBeWatchedData]);
 
   const loaderMethodCalled = useRef(false);
@@ -33,6 +34,7 @@ const useInfiniteLoading = ({
       setTimeout(loaderMethod, 0);
       loaderMethodCalled.current = true;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
   useEffect(() => {
@@ -42,6 +44,7 @@ const useInfiniteLoading = ({
       loaderMethodCalled.current = false;
       scrollingElement?.removeEventListener("scroll", handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toBeWatchedData]);
 };
 

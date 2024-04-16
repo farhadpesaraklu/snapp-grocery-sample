@@ -17,6 +17,10 @@ const Supermarket = () => {
 
   const uniqueFiltersSet = useSelector((state: RootState) => state.filterList.sortValue);
   const selectedFiltersList = useSelector((state: RootState) => state.filterList.filterValuesList);
+  const filtersAndSortList = useSelector((state: RootState) => state.filterList.filtersAndSortList);
+  const subCategoriesList = useSelector(
+    (state: RootState) => state.subCategoriesList.subCategoriesList,
+  );
 
   const {
     vendorCategoryData,
@@ -32,6 +36,7 @@ const Supermarket = () => {
 
   useEffect(() => {
     refetchVendorCategoryData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uniqueFiltersSet, selectedFiltersList]);
 
   useInfiniteLoading({
@@ -40,30 +45,30 @@ const Supermarket = () => {
     loaderMethod: vendorCategoryDataFetchNextPage,
     loading: vendorCategoryDataIsFetchingNextPage,
   });
-  const filtersAndSortList = useSelector((state: RootState) => state.filterList.filtersAndSortList);
-  console.log("filtersAndSortList", filtersAndSortList);
 
   return (
     <div className="supermarket-container">
       <TopToolbar data={filtersAndSortList} />
-      {vendorCategoryData ? (
+      {vendorCategoryData && (
         <SubCategories
-          items={vendorCategoryData?.pages?.[0]?.extra_sections?.categories}
+          items={subCategoriesList}
           handleClickSubCategory={setSelectedSubCategoryId}
-        />
-      ) : (
-        <TailSpin
-          visible={true}
-          height="80"
-          width="80"
-          color="#ff7800"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperClass="TailSpin-container"
         />
       )}
       <div className="product-list-container" id="list-container">
-        {vendorCategoryData && <ProductList data={vendorCategoryData.pages} />}
+        {vendorCategoryData ? (
+          <ProductList data={vendorCategoryData.pages} />
+        ) : (
+          <TailSpin
+            visible={true}
+            height="80"
+            width="80"
+            color="#ff7800"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperClass="TailSpin-container"
+          />
+        )}
       </div>
     </div>
   );

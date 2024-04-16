@@ -1,4 +1,3 @@
-import qs from "qs";
 import { apiUrlConstants } from "../../constants/apiUrlConstants";
 import http from "../../utils/http";
 import { VendorCateogryProductListParams } from "./type";

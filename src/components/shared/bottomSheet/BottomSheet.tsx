@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useRef } from "react";
 import { createPortal } from "react-dom";
 import Sheet, { SheetRef } from "react-modal-sheet";
 
@@ -20,8 +20,13 @@ const BottomSheet: FC<BottomSheetProps> = ({ isOpen, onClose, content, isFilterO
   }
 
   const sheetComponent = (
-    <Sheet ref={ref} isOpen={isOpen} onClose={onClose} snapPoints={isFilterOpen ? [850] : [246]}
-      initialSnap={1}>
+    <Sheet
+      ref={ref}
+      isOpen={isOpen}
+      onClose={onClose}
+      snapPoints={isFilterOpen ? [850] : [246]}
+      initialSnap={1}
+    >
       <Sheet.Container>
         <Sheet.Content>
           <Sheet.Scroller draggableAt="both">{content}</Sheet.Scroller>
