@@ -1,7 +1,6 @@
-
-
 .product-img {
     margin: 4px;
+    position: relative;
 }
 
 .product-card {
@@ -63,4 +62,24 @@
     font-weight: 500;
     line-height: 16px;
     margin-right: 4px;
+}
+
+.action-wrapper {
+    position: absolute;
+    padding: 10px;
+    right: -10px;
+    bottom: -10px;
+    z-index: 1;
+}
+
+.plus-container {
+    display: flex;
+    background: #fff;
+    color: rgb(255, 102, 31);
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgb(255, 102, 31);
+    border-radius: 6px;
+    justify-content: space-evenly;
 }
