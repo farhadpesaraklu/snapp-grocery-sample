@@ -1,7 +1,6 @@
 import { CloseCircle } from "iconsax-react";
 import { FC, useState } from "react";
 import "./FiltersContent.css"
-import GroupButton from "../groupButton/GroupButton";
 interface FiltersContentProps {
   setIsFilterOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
